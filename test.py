@@ -47,3 +47,18 @@ plt.show()
 '''
 
 
+import torch
+import torch.nn as nn
+
+class NNlayer(nn.Module):
+    def __init__(self,inputlayer , outputlayer):
+        super().__init__()
+        self.output = nn.Linear(inputlayer,outputlayer)
+    def forward(self,x):
+        x=self.output(x)
+        return x
+
+model = NNlayer(inputlayer=1,outputlayer=1)
+
+loss = nn.MSELoss()
+
