@@ -62,3 +62,18 @@ model = NNlayer(inputlayer=1,outputlayer=1)
 
 loss = nn.MSELoss()
 
+optimize = torch.optim.SGD(model.parameters(),lr=0.01)
+
+xtrain = torch.tensor([1.0,2.0,3.0,4.0,5.0]).view(-1,1)
+ytain = torch.tensor([2.0,4.0,6.0,8.0,10.0]).view(-1,1)
+
+for i in range(10000):
+    prediction = model(xtrain)
+    l = loss(prediction,ytain)
+
+    optimize.zero_grad()
+    l.backward()
+    optimize.step()
+
+result = model(torch.tensor([9.0]))
+print(result)
