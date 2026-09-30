@@ -33,3 +33,17 @@ for i in range(200000):
         c-= learning_rate * c.grad
         d-= learning_rate * d.grad
 
+        a.grad = None
+        b.grad = None
+        c.grad = None
+        d.grad = None
+    if i % 1000 == 0:
+        print(f"step: {i} loss: {loss.item()} a: {a.item()} b: {b.item()} c: {c.item()} d: {d.item()}")
+
+plt.plot(x.data,yp.data)
+plt.plot(x.data,y.data)
+plt.show()
+
+'''
+
+
